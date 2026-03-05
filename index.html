@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurant Menu</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial;
+}
+
+.container{
+padding-bottom:120px;
+}
+
+.menu h2{
+padding:12px;
+background:#f2f2f2;
+font-size:16px;
+}
+
+.item{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px;
+border-bottom:1px solid #eee;
+}
+
+.item img{
+width:60px;
+height:60px;
+border-radius:10px;
+object-fit:cover;
+}
+
+.info{
+flex:1;
+}
+
+.info h3{
+font-size:15px;
+}
+
+.info p{
+font-size:14px;
+color:#666;
+}
+
+.qty{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.qty button{
+width:30px;
+height:30px;
+border:none;
+background:#ff5a5f;
+color:white;
+font-size:18px;
+border-radius:6px;
+}
+
+.qty span{
+min-width:20px;
+text-align:center;
+}
+
+.customer{
+padding:12px;
+}
+
+.customer input,
+.customer textarea{
+width:100%;
+padding:10px;
+margin-top:8px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:14px;
+}
+
+.cartBar{
+position:fixed;
+bottom:10px;
+left:10px;
+right:10px;
+background:#25D366;
+color:white;
+padding:14px;
+text-align:center;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="menu">
+
+<h2>🍛 North Indian</h2>
+
+<div class="item" data-name="Paneer Butter Masala">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+<div class="info">
+<h3>Paneer Butter Masala</h3>
+<p>₹220</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('pbm',-1,220)">−</button>
+<span id="pbm">0</span>
+<button onclick="changeQty('pbm',1,220)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Shahi Paneer">
+<img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7">
+<div class="info">
+<h3>Shahi Paneer</h3>
+<p>₹230</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('sp',-1,230)">−</button>
+<span id="sp">0</span>
+<button onclick="changeQty('sp',1,230)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Dal Makhani">
+<img src="https://images.unsplash.com/photo-1626132647523-66f6b2b9b5b0">
+<div class="info">
+<h3>Dal Makhani</h3>
+<p>₹190</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('dm',-1,190)">−</button>
+<span id="dm">0</span>
+<button onclick="changeQty('dm',1,190)">+</button>
+</div>
+</div>
+
+
+<h2>🍜 Chinese</h2>
+
+<div class="item" data-name="Veg Hakka Noodles">
+<img src="https://images.unsplash.com/photo-1585032226651-759b368d7246">
+<div class="info">
+<h3>Veg Hakka Noodles</h3>
+<p>₹140</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('noodles',-1,140)">−</button>
+<span id="noodles">0</span>
+<button onclick="changeQty('noodles',1,140)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Fried Rice">
+<img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b">
+<div class="info">
+<h3>Fried Rice</h3>
+<p>₹130</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('friedrice',-1,130)">−</button>
+<span id="friedrice">0</span>
+<button onclick="changeQty('friedrice',1,130)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Veg Manchurian">
+<img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624">
+<div class="info">
+<h3>Veg Manchurian</h3>
+<p>₹170</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('vm',-1,170)">−</button>
+<span id="vm">0</span>
+<button onclick="changeQty('vm',1,170)">+</button>
+</div>
+</div>
+
+
+<h2>🍔 Fast Food</h2>
+
+<div class="item" data-name="Margherita Pizza">
+<img src="https://images.unsplash.com/photo-1604382355076-af4b0eb60143">
+<div class="info">
+<h3>Margherita Pizza</h3>
+<p>₹199</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('pizza',-1,199)">−</button>
+<span id="pizza">0</span>
+<button onclick="changeQty('pizza',1,199)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Veg Burger">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+<div class="info">
+<h3>Veg Burger</h3>
+<p>₹99</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('burger',-1,99)">−</button>
+<span id="burger">0</span>
+<button onclick="changeQty('burger',1,99)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="French Fries">
+<img src="https://images.unsplash.com/photo-1576107232684-1279f390859f">
+<div class="info">
+<h3>French Fries</h3>
+<p>₹79</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('fries',-1,79)">−</button>
+<span id="fries">0</span>
+<button onclick="changeQty('fries',1,79)">+</button>
+</div>
+</div>
+
+
+<h2>🥤 Beverages</h2>
+
+<div class="item" data-name="Cold Coffee">
+<img src="https://images.unsplash.com/photo-1551024601-bec78aea704b">
+<div class="info">
+<h3>Cold Coffee</h3>
+<p>₹120</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('cc',-1,120)">−</button>
+<span id="cc">0</span>
+<button onclick="changeQty('cc',1,120)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Mango Shake">
+<img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03">
+<div class="info">
+<h3>Mango Shake</h3>
+<p>₹110</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('ms',-1,110)">−</button>
+<span id="ms">0</span>
+<button onclick="changeQty('ms',1,110)">+</button>
+</div>
+</div>
+
+
+<h2>🍨 Desserts</h2>
+
+<div class="item" data-name="Gulab Jamun">
+<img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb">
+<div class="info">
+<h3>Gulab Jamun</h3>
+<p>₹60</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('gj',-1,60)">−</button>
+<span id="gj">0</span>
+<button onclick="changeQty('gj',1,60)">+</button>
+</div>
+</div>
+
+</div>
+
+
+<div class="customer">
+<input id="custName" placeholder="Your Name">
+<textarea id="custAddress" placeholder="Delivery Address"></textarea>
+<textarea id="cookInstr" placeholder="Cooking Instructions"></textarea>
+</div>
+
+
+<div class="cartBar" onclick="sendOrder()">
+🛒 <span id="items">0</span> items | ₹<span id="total">0</span><br>
+Tap to Order on WhatsApp
+</div>
+
+
+<script>
+
+let total=0
+let items=0
+
+function changeQty(id,val,price){
+
+let el=document.getElementById(id)
+let count=parseInt(el.innerText)
+
+count+=val
+if(count<0) count=0
+
+if(val==1){
+total+=price
+items++
+}
+
+if(val==-1){
+total-=price
+items--
+}
+
+if(items<0) items=0
+if(total<0) total=0
+
+el.innerText=count
+
+document.getElementById("items").innerText=items
+document.getElementById("total").innerText=total
+
+}
+
+
+function sendOrder(){
+
+if(items==0){
+alert("Please add some items 🙂")
+return
+}
+
+let name=document.getElementById("custName").value || "Customer"
+let address=document.getElementById("custAddress").value || "Not provided"
+let instruction=document.getElementById("cookInstr").value || "None"
+
+let msg="Hello! I'd like to place an order 😊%0A%0A"
+
+msg+="Name: "+name+"%0A"
+msg+="Address: "+address+"%0A"
+msg+="Instructions: "+instruction+"%0A%0A"
+
+msg+="🧾 Order Details:%0A"
+
+document.querySelectorAll(".item").forEach(item=>{
+
+let food=item.getAttribute("data-name")
+let qty=parseInt(item.querySelector("span").innerText)
+
+if(qty>0){
+msg+="• "+food+" x "+qty+"%0A"
+}
+
+})
+
+msg+="%0A💰 Total Bill: ₹"+total
+
+window.open("https://wa.me/916206458231?text="+msg)
+
+}
+
+</script>
+
+</div>
+
+</body>
+</html>
