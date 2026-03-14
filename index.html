@@ -586,7 +586,7 @@ if(instruction==""){
 instruction="None"
 }
 
-// Create Order Number DD-MM-HHMM
+// Generate Order Number (DD-MM-HHMM)
 let now=new Date()
 
 let day=String(now.getDate()).padStart(2,'0')
@@ -596,7 +596,7 @@ let minutes=String(now.getMinutes()).padStart(2,'0')
 
 let orderNo=day+"-"+month+"-"+hours+minutes
 
-let msg="🥘 Smart Kitchen\n"
+let msg="🍔 Foodie Restaurant\n"
 msg+="━━━━━━━━━━━━━━━━━━\n\n"
 
 msg+="Hello 👋\n"
@@ -616,6 +616,7 @@ msg+=instruction+"\n\n"
 msg+="🍽 ORDER DETAILS\n"
 
 let totalItems=0
+let itemSummary=""
 
 document.querySelectorAll(".item").forEach(item=>{
 
@@ -630,6 +631,8 @@ totalItems+=qty
 
 msg+="• "+food+" x "+qty+"  →  ₹"+itemTotal+"\n"
 
+itemSummary+=food+" x "+qty+", "
+
 }
 
 })
@@ -638,8 +641,25 @@ msg+="\n━━━━━━━━━━━━━━━━━━\n"
 msg+="Total Items: "+totalItems+"\n"
 msg+="Bill Value: ₹"+total
 
+// Send data to Google Sheets
+fetch("https://script.google.com/macros/s/AKfycbwKBqgv6Ui_0qO6uMNZst3bgiFXRP0U4NeujWFGwf0fCyd7i08jP90HUtcfqSRfIs5T/exec",{
+method:"POST",
+body:JSON.stringify({
+orderNo:orderNo,
+date:new Date().toLocaleString(),
+name:name,
+phone:phone,
+address:address,
+items:itemSummary,
+totalItems:totalItems,
+total:total
+})
+})
+
+// Encode message for WhatsApp
 let encodedMsg=encodeURIComponent(msg)
 
+// Open WhatsApp
 window.open("https://wa.me/916206458231?text="+encodedMsg)
 
 }
