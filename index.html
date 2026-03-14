@@ -642,7 +642,7 @@ msg+="Total Items: "+totalItems+"\n"
 msg+="Bill Value: ₹"+total
 
 // Send data to Google Sheets
-fetch("https://script.google.com/macros/s/AKfycbwKBqgv6Ui_0qO6uMNZst3bgiFXRP0U4NeujWFGwf0fCyd7i08jP90HUtcfqSRfIs5T/exec",{
+fetch("https://script.google.com/macros/s/AKfycbwX1WWlME0_tBPLvWURxAjnSS9PDA1BclY3-WqFsXQfN8YAxSapQK9-M_CweBW-RJv06w/exec",{
 method:"POST",
 body:JSON.stringify({
 orderNo:orderNo,
@@ -655,7 +655,7 @@ totalItems:totalItems,
 total:total
 })
 })
-
+  
 // Encode message for WhatsApp
 let encodedMsg=encodeURIComponent(msg)
 
