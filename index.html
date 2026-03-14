@@ -2,6 +2,7 @@
 <html>
 <head>
 
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Restaurant Menu</title>
 
@@ -15,6 +16,7 @@ padding:0;
 
 body{
 font-family:Arial;
+background:#fafafa;
 }
 
 .container{
@@ -90,6 +92,12 @@ border-radius:6px;
 font-size:14px;
 }
 
+.hint{
+font-size:12px;
+color:#777;
+margin-top:4px;
+}
+
 .cartBar{
 position:fixed;
 bottom:10px;
@@ -116,191 +124,413 @@ box-shadow:0 4px 10px rgba(0,0,0,0.2);
 
 <div class="menu">
 
-<h2>🍛 North Indian</h2>
+<h2>🥢 Chinese - Veg</h2>
 
-<div class="item" data-name="Paneer Butter Masala">
-<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+<div class="item" data-name="Veg Chilli">
+<img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46">
 <div class="info">
-<h3>Paneer Butter Masala</h3>
-<p>₹220</p>
+<h3>Veg Chilli</h3>
+<p>₹80</p>
 </div>
 <div class="qty">
-<button onclick="changeQty('pbm',-1,220)">−</button>
-<span id="pbm">0</span>
-<button onclick="changeQty('pbm',1,220)">+</button>
+<button onclick="changeQty('v1',-1,80)">−</button>
+<span id="v1">0</span>
+<button onclick="changeQty('v1',1,80)">+</button>
 </div>
 </div>
 
-<div class="item" data-name="Shahi Paneer">
+<div class="item" data-name="Paneer Chilli">
 <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7">
 <div class="info">
-<h3>Shahi Paneer</h3>
-<p>₹230</p>
+<h3>Paneer Chilli</h3>
+<p>₹90</p>
 </div>
 <div class="qty">
-<button onclick="changeQty('sp',-1,230)">−</button>
-<span id="sp">0</span>
-<button onclick="changeQty('sp',1,230)">+</button>
+<button onclick="changeQty('v2',-1,90)">−</button>
+<span id="v2">0</span>
+<button onclick="changeQty('v2',1,90)">+</button>
 </div>
 </div>
 
-<div class="item" data-name="Dal Makhani">
-<img src="https://images.unsplash.com/photo-1626132647523-66f6b2b9b5b0">
+<div class="item" data-name="Veg Fried Rice">
+<img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3">
 <div class="info">
-<h3>Dal Makhani</h3>
-<p>₹190</p>
+<h3>Veg Fried Rice</h3>
+<p>₹80</p>
 </div>
 <div class="qty">
-<button onclick="changeQty('dm',-1,190)">−</button>
-<span id="dm">0</span>
-<button onclick="changeQty('dm',1,190)">+</button>
+<button onclick="changeQty('v3',-1,80)">−</button>
+<span id="v3">0</span>
+<button onclick="changeQty('v3',1,80)">+</button>
 </div>
 </div>
 
-
-<h2>🍜 Chinese</h2>
-
-<div class="item" data-name="Veg Hakka Noodles">
-<img src="https://images.unsplash.com/photo-1585032226651-759b368d7246">
+<div class="item" data-name="Veg Chowmein">
+<img src="https://images.unsplash.com/photo-1612927601601-6638404737ce">
 <div class="info">
-<h3>Veg Hakka Noodles</h3>
-<p>₹140</p>
+<h3>Veg Chowmein</h3>
+<p>₹60</p>
 </div>
 <div class="qty">
-<button onclick="changeQty('noodles',-1,140)">−</button>
-<span id="noodles">0</span>
-<button onclick="changeQty('noodles',1,140)">+</button>
+<button onclick="changeQty('v4',-1,60)">−</button>
+<span id="v4">0</span>
+<button onclick="changeQty('v4',1,60)">+</button>
 </div>
 </div>
 
-<div class="item" data-name="Fried Rice">
-<img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b">
+<div class="item" data-name="Veg Shanghai">
+<img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841">
 <div class="info">
-<h3>Fried Rice</h3>
-<p>₹130</p>
+<h3>Veg Shanghai</h3>
+<p>₹110</p>
 </div>
 <div class="qty">
-<button onclick="changeQty('friedrice',-1,130)">−</button>
-<span id="friedrice">0</span>
-<button onclick="changeQty('friedrice',1,130)">+</button>
+<button onclick="changeQty('v5',-1,110)">−</button>
+<span id="v5">0</span>
+<button onclick="changeQty('v5',1,110)">+</button>
 </div>
 </div>
 
 <div class="item" data-name="Veg Manchurian">
-<img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624">
+<img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46">
 <div class="info">
 <h3>Veg Manchurian</h3>
-<p>₹170</p>
+<p>₹119</p>
 </div>
 <div class="qty">
-<button onclick="changeQty('vm',-1,170)">−</button>
-<span id="vm">0</span>
-<button onclick="changeQty('vm',1,170)">+</button>
+<button onclick="changeQty('v6',-1,119)">−</button>
+<span id="v6">0</span>
+<button onclick="changeQty('v6',1,119)">+</button>
 </div>
 </div>
 
-
-<h2>🍔 Fast Food</h2>
-
-<div class="item" data-name="Margherita Pizza">
-<img src="https://images.unsplash.com/photo-1604382355076-af4b0eb60143">
+<div class="item" data-name="Paneer Manchurian">
+<img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7">
 <div class="info">
-<h3>Margherita Pizza</h3>
-<p>₹199</p>
+<h3>Paneer Manchurian</h3>
+<p>₹129</p>
 </div>
 <div class="qty">
-<button onclick="changeQty('pizza',-1,199)">−</button>
-<span id="pizza">0</span>
-<button onclick="changeQty('pizza',1,199)">+</button>
+<button onclick="changeQty('v7',-1,129)">−</button>
+<span id="v7">0</span>
+<button onclick="changeQty('v7',1,129)">+</button>
 </div>
 </div>
 
-<div class="item" data-name="Veg Burger">
-<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+<div class="item" data-name="Babycorn Chilli">
+<img src="https://images.unsplash.com/photo-1625943553852-781c6dd46faa">
 <div class="info">
-<h3>Veg Burger</h3>
-<p>₹99</p>
+<h3>Babycorn Chilli</h3>
+<p>₹159</p>
 </div>
 <div class="qty">
-<button onclick="changeQty('burger',-1,99)">−</button>
-<span id="burger">0</span>
-<button onclick="changeQty('burger',1,99)">+</button>
+<button onclick="changeQty('v8',-1,159)">−</button>
+<span id="v8">0</span>
+<button onclick="changeQty('v8',1,159)">+</button>
 </div>
 </div>
 
-<div class="item" data-name="French Fries">
-<img src="https://images.unsplash.com/photo-1576107232684-1279f390859f">
+
+<h2>🍳 Chinese - Egg</h2>
+
+<div class="item" data-name="Egg Fried Rice">
+<img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b">
 <div class="info">
-<h3>French Fries</h3>
-<p>₹79</p>
+<h3>Egg Fried Rice</h3>
+<p>₹90</p>
 </div>
 <div class="qty">
-<button onclick="changeQty('fries',-1,79)">−</button>
-<span id="fries">0</span>
-<button onclick="changeQty('fries',1,79)">+</button>
+<button onclick="changeQty('e1',-1,90)">−</button>
+<span id="e1">0</span>
+<button onclick="changeQty('e1',1,90)">+</button>
 </div>
 </div>
 
-
-<h2>🥤 Beverages</h2>
-
-<div class="item" data-name="Cold Coffee">
-<img src="https://images.unsplash.com/photo-1551024601-bec78aea704b">
+<div class="item" data-name="Egg Chowmein">
+<img src="https://images.unsplash.com/photo-1612927601601-6638404737ce">
 <div class="info">
-<h3>Cold Coffee</h3>
+<h3>Egg Chowmein</h3>
+<p>₹80</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('e2',-1,80)">−</button>
+<span id="e2">0</span>
+<button onclick="changeQty('e2',1,80)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Egg Shanghai">
+<img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b">
+<div class="info">
+<h3>Egg Shanghai</h3>
 <p>₹120</p>
 </div>
 <div class="qty">
-<button onclick="changeQty('cc',-1,120)">−</button>
-<span id="cc">0</span>
-<button onclick="changeQty('cc',1,120)">+</button>
+<button onclick="changeQty('e3',-1,120)">−</button>
+<span id="e3">0</span>
+<button onclick="changeQty('e3',1,120)">+</button>
 </div>
 </div>
 
-<div class="item" data-name="Mango Shake">
-<img src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03">
+
+<h2>🍗 Chinese - Chicken</h2>
+
+<div class="item" data-name="Chicken Chowmein">
+<img src="https://images.unsplash.com/photo-1585032226651-759b368d7246">
 <div class="info">
-<h3>Mango Shake</h3>
+<h3>Chicken Chowmein</h3>
+<p>₹100</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('c1',-1,100)">−</button>
+<span id="c1">0</span>
+<button onclick="changeQty('c1',1,100)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Chicken Fried Rice">
+<img src="https://images.unsplash.com/photo-1604909052583-bb4640439f3b">
+<div class="info">
+<h3>Chicken Fried Rice</h3>
 <p>₹110</p>
 </div>
 <div class="qty">
-<button onclick="changeQty('ms',-1,110)">−</button>
-<span id="ms">0</span>
-<button onclick="changeQty('ms',1,110)">+</button>
+<button onclick="changeQty('c2',-1,110)">−</button>
+<span id="c2">0</span>
+<button onclick="changeQty('c2',1,110)">+</button>
 </div>
 </div>
 
-
-<h2>🍨 Desserts</h2>
-
-<div class="item" data-name="Gulab Jamun">
-<img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb">
+<div class="item" data-name="Chicken Egg Fried Rice">
+<img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b">
 <div class="info">
-<h3>Gulab Jamun</h3>
-<p>₹60</p>
+<h3>Chicken Egg Fried Rice</h3>
+<p>₹120</p>
 </div>
 <div class="qty">
-<button onclick="changeQty('gj',-1,60)">−</button>
-<span id="gj">0</span>
-<button onclick="changeQty('gj',1,60)">+</button>
+<button onclick="changeQty('c3',-1,120)">−</button>
+<span id="c3">0</span>
+<button onclick="changeQty('c3',1,120)">+</button>
 </div>
 </div>
 
+<div class="item" data-name="Egg Chicken Chowmein">
+<img src="https://images.unsplash.com/photo-1612927601601-6638404737ce">
+<div class="info">
+<h3>Egg Chicken Chowmein</h3>
+<p>₹110</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('c4',-1,110)">−</button>
+<span id="c4">0</span>
+<button onclick="changeQty('c4',1,110)">+</button>
+</div>
 </div>
 
+<div class="item" data-name="Chicken Mix Shanghai">
+<img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
+<div class="info">
+<h3>Chicken Mix Shanghai</h3>
+<p>₹140</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('c5',-1,140)">−</button>
+<span id="c5">0</span>
+<button onclick="changeQty('c5',1,140)">+</button>
+</div>
+</div>
+
+
+<h2>🍗 Non-Veg Starters</h2>
+
+<div class="item" data-name="Boneless Chilli Chicken">
+<img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
+<div class="info">
+<h3>Boneless Chilli Chicken</h3>
+<p>₹149</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('nv1',-1,149)">−</button>
+<span id="nv1">0</span>
+<button onclick="changeQty('nv1',1,149)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Chicken Manchurian">
+<img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
+<div class="info">
+<h3>Chicken Manchurian</h3>
+<p>₹139</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('nv2',-1,139)">−</button>
+<span id="nv2">0</span>
+<button onclick="changeQty('nv2',1,139)">+</button>
+</div>
+</div>
+
+
+<h2>🌯 Rolls</h2>
+
+<div class="item" data-name="Egg Roll">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+<div class="info">
+<h3>Egg Roll</h3>
+<p>₹50</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('r1',-1,50)">−</button>
+<span id="r1">0</span>
+<button onclick="changeQty('r1',1,50)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Double Egg Roll">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+<div class="info">
+<h3>Double Egg Roll</h3>
+<p>₹80</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('r2',-1,80)">−</button>
+<span id="r2">0</span>
+<button onclick="changeQty('r2',1,80)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Chicken Roll">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+<div class="info">
+<h3>Chicken Roll</h3>
+<p>₹100</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('r3',-1,100)">−</button>
+<span id="r3">0</span>
+<button onclick="changeQty('r3',1,100)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Chicken Egg Roll">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+<div class="info">
+<h3>Chicken Egg Roll</h3>
+<p>₹110</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('r4',-1,110)">−</button>
+<span id="r4">0</span>
+<button onclick="changeQty('r4',1,110)">+</button>
+</div>
+</div>
+
+
+<h2>🍜 Combos</h2>
+
+<div class="item" data-name="Veg Chilli Half with Veg Fried Rice Half">
+<div class="info">
+<h3>Veg Chilli (Half) + Veg Fried Rice (Half)</h3>
+<p>₹159</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('co1',-1,159)">−</button>
+<span id="co1">0</span>
+<button onclick="changeQty('co1',1,159)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Veg Chilli Half with Veg Chowmein Half">
+<div class="info">
+<h3>Veg Chilli (Half) + Veg Chowmein (Half)</h3>
+<p>₹140</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('co2',-1,140)">−</button>
+<span id="co2">0</span>
+<button onclick="changeQty('co2',1,140)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Paneer Chilli Half with Veg Chowmein Half">
+<div class="info">
+<h3>Paneer Chilli (Half) + Veg Chowmein (Half)</h3>
+<p>₹149</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('co3',-1,149)">−</button>
+<span id="co3">0</span>
+<button onclick="changeQty('co3',1,149)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Veg Chowmein Half with Boneless Chilli Chicken Half">
+<div class="info">
+<h3>Veg Chowmein (Half) + Boneless Chilli Chicken (Half)</h3>
+<p>₹169</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('co4',-1,169)">−</button>
+<span id="co4">0</span>
+<button onclick="changeQty('co4',1,169)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Veg Fried Rice Half with Boneless Chilli Chicken Half">
+<div class="info">
+<h3>Veg Fried Rice (Half) + Boneless Chilli Chicken (Half)</h3>
+<p>₹190</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('co5',-1,190)">−</button>
+<span id="co5">0</span>
+<button onclick="changeQty('co5',1,190)">+</button>
+</div>
+</div>
+
+
+<h2>🥣 Soups</h2>
+
+<div class="item" data-name="Chicken Soup">
+<div class="info">
+<h3>Chicken Soup</h3>
+<p>₹110</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('s1',-1,110)">−</button>
+<span id="s1">0</span>
+<button onclick="changeQty('s1',1,110)">+</button>
+</div>
+</div>
+
+<div class="item" data-name="Chicken Egg Soup">
+<div class="info">
+<h3>Chicken Egg Soup</h3>
+<p>₹130</p>
+</div>
+<div class="qty">
+<button onclick="changeQty('s2',-1,130)">−</button>
+<span id="s2">0</span>
+<button onclick="changeQty('s2',1,130)">+</button>
+</div>
+</div>
 
 <div class="customer">
-<input id="custName" placeholder="Your Name">
-<textarea id="custAddress" placeholder="Delivery Address"></textarea>
-<textarea id="cookInstr" placeholder="Cooking Instructions"></textarea>
-</div>
 
+<input id="custName" placeholder="Your Name">
+
+<input id="custPhone" type="tel" placeholder="Phone Number">
+<div class="hint">Provide number so delivery person can contact you</div>
+
+<textarea id="custAddress" placeholder="Delivery Address"></textarea>
+
+<textarea id="cookInstr" placeholder="Cooking Instructions (optional)"></textarea>
+
+</div>
 
 <div class="cartBar" onclick="sendOrder()">
 🛒 <span id="items">0</span> items | ₹<span id="total">0</span><br>
 Tap to Order on WhatsApp
 </div>
-
 
 <script>
 
@@ -335,21 +565,35 @@ document.getElementById("total").innerText=total
 
 }
 
-
 function sendOrder(){
+
+let name=document.getElementById("custName").value.trim()
+let phone=document.getElementById("custPhone").value.trim()
+let address=document.getElementById("custAddress").value.trim()
+let instruction=document.getElementById("cookInstr").value.trim()
 
 if(items==0){
 alert("Please add some items 🙂")
 return
 }
 
-let name=document.getElementById("custName").value || "Customer"
-let address=document.getElementById("custAddress").value || "Not provided"
-let instruction=document.getElementById("cookInstr").value || "None"
+if(name=="" || phone=="" || address==""){
+alert("Please fill Name, Phone and Address before ordering")
+return
+}
 
-let msg="Hello! I'd like to place an order 😊%0A%0A"
+if(instruction==""){
+instruction="None"
+}
+
+let orderNo=Math.floor(1000+Math.random()*9000)
+
+let msg="Hello 👋%0AI would like to place the following order.%0A%0A"
+
+msg+="Order No: "+orderNo+"%0A%0A"
 
 msg+="Name: "+name+"%0A"
+msg+="Phone: "+phone+"%0A"
 msg+="Address: "+address+"%0A"
 msg+="Instructions: "+instruction+"%0A%0A"
 
@@ -359,14 +603,19 @@ document.querySelectorAll(".item").forEach(item=>{
 
 let food=item.getAttribute("data-name")
 let qty=parseInt(item.querySelector("span").innerText)
+let price=parseInt(item.querySelector(".info p").innerText.replace("₹",""))
 
 if(qty>0){
-msg+="• "+food+" x "+qty+"%0A"
+
+let itemTotal=qty*price
+
+msg+="• "+food+" x "+qty+" = ₹"+itemTotal+"%0A"
+
 }
 
 })
 
-msg+="%0A💰 Total Bill: ₹"+total
+msg+="%0ABill Value: ₹"+total
 
 window.open("https://wa.me/916206458231?text="+msg)
 
