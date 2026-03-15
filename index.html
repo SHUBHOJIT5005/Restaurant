@@ -760,6 +760,7 @@ msg+=instruction+"\n\n"
 msg+="🍽 ORDER DETAILS\n"
 
 let totalItems=0
+let itemsList=[]
 
 document.querySelectorAll(".qty").forEach(q=>{
 
@@ -780,8 +781,10 @@ totalItems+=qty
 
 if(size){
 msg+="• "+item+" ("+size+") x "+qty+" → ₹"+itemTotal+"\n"
+itemsList.push(item+" ("+size+") x "+qty)
 }else{
 msg+="• "+item+" x "+qty+" → ₹"+itemTotal+"\n"
+itemsList.push(item+" x "+qty)
 }
 
 }
@@ -791,6 +794,20 @@ msg+="• "+item+" x "+qty+" → ₹"+itemTotal+"\n"
 msg+="\n━━━━━━━━━━━━━━━━━━\n"
 msg+="Total Items: "+totalItems+"\n"
 msg+="Bill Value: ₹"+total
+
+fetch("https://script.google.com/macros/s/AKfycbwvksJDtpCh_D77HfQ6E9ACUKR_kEiVrFtZqCEnf5EyIiEZ2EcgaLjljvAHLBXLMvxQ/exec",{
+method:"POST",
+body:JSON.stringify({
+orderNo:orderNo,
+date:new Date().toLocaleString(),
+name:name,
+phone:phone,
+address:address,
+items:itemsList,
+totalItems:totalItems,
+total:total
+})
+})
 
 let encodedMsg=encodeURIComponent(msg)
 
