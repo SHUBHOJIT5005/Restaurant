@@ -209,6 +209,22 @@ flex-shrink:0;
 border-radius:1px;
 }
 
+.searchBox{
+padding:12px;
+background:#fafafa;
+position:sticky;
+top:0;
+z-index:500;
+}
+
+.searchBox input{
+width:100%;
+padding:10px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:14px;
+}
+
 </style>
 
 </head>
@@ -227,6 +243,10 @@ border-radius:1px;
 
 </div>
 
+</div>
+
+<div class="searchBox">
+<input type="text" id="searchInput" placeholder="🔍 Search food item..." onkeyup="searchMenu()">
 </div>
 
 <div class="menu">
@@ -810,6 +830,27 @@ slides.style.transform="translateX(-"+slideIndex*100+"%)"
 }
 
 setInterval(autoSlide,3000)
+
+// Search Functionality
+function searchMenu(){
+
+let input=document.getElementById("searchInput").value.toLowerCase()
+
+let items=document.querySelectorAll(".item")
+
+items.forEach(function(item){
+
+let name=item.getAttribute("data-name").toLowerCase()
+
+if(name.includes(input)){
+item.style.display="flex"
+}else{
+item.style.display="none"
+}
+
+})
+
+}
 
 </script>
 
