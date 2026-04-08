@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Kitchen | Premium Tiffin Excellence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, .heading-font { font-family: 'Playfair Display', serif; }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .menu-card { transition: all 0.4s ease; border: 1px solid #f1f5f9; }
+        .menu-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); border-color: #ef4444; }
+        .tab-active { background: #dc2626; color: white; border-color: #dc2626; }
+        .tier-toggle { transition: 0.3s; }
+        .hidden-tier { display: none; }
+    </style>
+</head>
+<body class="bg-[#FCFBFA] text-slate-800">
+
+    <!-- Navbar -->
+    <nav class="glass fixed w-full z-50 border-b border-red-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="text-2xl font-bold text-red-600 leading-none uppercase tracking-tighter">Smart Kitchen</span>
+                <span class="text-[9px] text-gray-500 font-bold tracking-[0.2em] mt-1">FSSAI REG: 21119239000416</span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-semibold text-sm uppercase tracking-widest">
+                <a href="#menu" class="hover:text-red-600 transition">The Menu</a>
+                <a href="#plans" class="hover:text-red-600 transition">Pricing</a>
+                <a href="#contact" class="hover:text-red-600 transition">Contact</a>
+            </div>
+            <a href="https://wa.me/919470356191" class="bg-red-600 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-slate-900 transition flex items-center shadow-lg shadow-red-200">
+                <i class="fab fa-whatsapp mr-2 text-lg"></i> Subscribe
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-flex items-center space-x-2 bg-red-50 px-3 py-1 rounded-full mb-6">
+                    <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                    <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Accepting New Subscriptions</span>
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">Ghar Jaisa Swad, <br><span class="text-red-600 italic">Chef Style</span> Presentation.</h1>
+                <p class="text-lg text-slate-600 mb-10 leading-relaxed max-w-xl">We don't just deliver food; we deliver health and nostalgia. Prepared with premium oils and farm-fresh vegetables daily.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#menu" class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-xl">View Weekly Menu</a>
+                    <div class="flex items-center space-x-4 border-l pl-6 border-slate-200">
+                        <p class="text-sm font-bold leading-tight">Call for Inquiry:<br><span class="text-red-600 text-lg">9470356191</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative group">
+                <div class="absolute -inset-4 bg-red-100 rounded-[3rem] -rotate-3 transition group-hover:rotate-0"></div>
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80" alt="Premium Food" class="relative rounded-[2.5rem] shadow-2xl object-cover h-[500px] w-full">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Explore the Weekly Menu</h2>
+                
+                <!-- Tier Switcher -->
+                <div class="flex justify-center mb-10">
+                    <div class="bg-slate-100 p-1.5 rounded-2xl inline-flex shadow-inner">
+                        <button onclick="switchTier('basic')" id="btn-basic" class="tier-toggle px-8 py-3 rounded-xl font-bold text-sm uppercase transition active tab-active">Standard Plan</button>
+                        <button onclick="switchTier('premium')" id="btn-premium" class="tier-toggle px-8 py-3 rounded-xl font-bold text-sm uppercase transition">Executive Plan (Royal)</button>
+                    </div>
+                </div>
+
+                <!-- Day Selector -->
+                <div class="flex flex-wrap justify-center gap-2 md:gap-4" id="day-tabs">
+                    <button onclick="changeDay('mon')" class="day-btn tab-active px-6 py-2 rounded-full border border-slate-200 font-bold text-sm transition uppercase">Mon</button>
+                    <button onclick="changeDay('tue')" class="day-btn px-6 py-2 rounded-full border border-slate-200 font-bold text-sm transition uppercase">Tue</button>
+                    <button onclick="changeDay('wed')" class="day-btn px-6 py-2 rounded-full border border-slate-200 font-bold text-sm transition uppercase">Wed</button>
+                    <button onclick="changeDay('thu')" class="day-btn px-6 py-2 rounded-full border border-slate-200 font-bold text-sm transition uppercase">Thu</button>
+                    <button onclick="changeDay('fri')" class="day-btn px-6 py-2 rounded-full border border-slate-200 font-bold text-sm transition uppercase">Fri</button>
+                    <button onclick="changeDay('sat')" class="day-btn px-6 py-2 rounded-full border border-slate-200 font-bold text-sm transition uppercase">Sat</button>
+                    <button onclick="changeDay('sun')" class="day-btn px-6 py-2 rounded-full border border-slate-200 font-bold text-sm transition uppercase">Sun</button>
+                </div>
+            </div>
+
+            <!-- Menu Grid -->
+            <div id="menu-display" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Javascript will inject meal cards here -->
+            </div>
+            
+            <div class="mt-16 bg-red-50 p-6 rounded-3xl flex items-center justify-between flex-wrap gap-4 border border-red-100">
+                <div class="flex items-center space-x-4">
+                    <span class="bg-red-500 text-white p-3 rounded-full"><i class="fas fa-info-circle"></i></span>
+                    <p class="text-slate-700 font-medium"><b>Executive Plan</b> includes extra Appetizers, Premium Raita, Sweet Dish & choice of drink.</p>
+                </div>
+                <a href="#plans" class="text-red-600 font-bold border-b-2 border-red-600 pb-1">See Plan Comparison →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscription Plans -->
+    <section id="plans" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16">Choose Your Smart Plan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-200 hover:shadow-2xl transition group">
+                    <h3 class="text-2xl font-bold mb-4 italic">Standard (Daily Comfort)</h3>
+                    <p class="text-slate-500 mb-8">Home-style cooking for your daily nutritional needs.</p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center space-x-3"><i class="fas fa-check-circle text-green-500"></i> <span>Breakfast + Lunch + Dinner</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-check-circle text-green-500"></i> <span>Fixed Weekly Menu</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-check-circle text-green-500"></i> <span>Free Eco-friendly Delivery</span></li>
+                    </ul>
+                    <button class="w-full py-4 rounded-2xl bg-slate-100 text-slate-900 font-bold group-hover:bg-slate-900 group-hover:text-white transition uppercase tracking-widest text-sm">Subscribe Now</button>
+                </div>
+                <!-- Executive Plan -->
+                <div class="bg-white p-10 rounded-[2.5rem] border-2 border-red-500 shadow-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-red-500 text-white px-6 py-2 rounded-bl-2xl font-bold text-xs uppercase">Bestseller</div>
+                    <h3 class="text-2xl font-bold mb-4 italic">Executive (The Royal Feast)</h3>
+                    <p class="text-slate-500 mb-8">For those who want variety, luxury, and extra appetite.</p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center space-x-3"><i class="fas fa-plus-circle text-red-500"></i> <span class="font-bold">Daily Sweet Dish & Appetizers</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-plus-circle text-red-500"></i> <span>Choice of Special Raita/Salads</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-plus-circle text-red-500"></i> <span>Flexi-Pause (Skip days anytime)</span></li>
+                    </ul>
+                    <button class="w-full py-4 rounded-2xl bg-red-600 text-white font-bold hover:bg-slate-900 transition uppercase tracking-widest text-sm shadow-xl shadow-red-200">Go Executive</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12">From Our Kitchen</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=400&q=80" class="rounded-3xl h-64 w-full object-cover">
+                <img src="https://images.unsplash.com/photo-1601050638917-3d873bc7012f?auto=format&fit=crop&w=400&q=80" class="rounded-3xl h-64 w-full object-cover mt-8">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=400&q=80" class="rounded-3xl h-64 w-full object-cover">
+                <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=400&q=80" class="rounded-3xl h-64 w-full object-cover mt-8">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-900 text-white py-20 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 border-b border-slate-800 pb-16 mb-16">
+            <div>
+                <h3 class="text-2xl font-bold text-red-500 uppercase mb-6 tracking-tighter">Smart Kitchen</h3>
+                <p class="text-slate-400 leading-relaxed mb-6">Redefining mess services with professional hygiene and home-style love. Your health is our commitment.</p>
+                <div class="text-sm font-mono bg-slate-800 p-3 rounded border border-slate-700">FSSAI: 21119239000416</div>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-3 text-slate-400">
+                    <li><a href="#" class="hover:text-red-500">Weekly Menu</a></li>
+                    <li><a href="#" class="hover:text-red-500">Subscription Plans</a></li>
+                    <li><a href="#" class="hover:text-red-500">Bulk Orders</a></li>
+                    <li><a href="#" class="hover:text-red-500">Corporate Tie-ups</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-6">Contact Us</h4>
+                <p class="text-slate-400 mb-4 font-bold text-xl">+91 9470356191</p>
+                <p class="text-slate-400 mb-6">Serving across the city center. Hot & Fresh delivery within 45 mins of preparation.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-red-600 transition"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="text-center text-slate-500 text-sm italic">Designed for Smart Kitchen | All Rights Reserved 2024</p>
+    </footer>
+
+    <script>
+        let currentTier = 'basic';
+        let currentDay = 'mon';
+
+        const menu = {
+            mon: {
+                basic: { b: "Idli, Chutney / Sambhar", l: "Rice, Dal, Sabji Salad / Chips", d: "Roti / Chicken Chilli / Paneer Masala" },
+                premium: { b: "Idli, Vada, Sambhar + Filter Coffee", l: "Rice, Dal, 2 Sabji, Salad, Papad + Curd", d: "Roti / Butter Chicken / Shahi Paneer + Gulab Jamun" }
+            },
+            tue: {
+                basic: { b: "Puri, Aloo Chana Sabji", l: "Rice, Dal, Sabji, Chips / Salad", d: "Roti, Sabji" },
+                premium: { b: "Puri, Aloo Chana Sabji + Seasonal Fruits", l: "Rice, Dal, Sabji, Raita, Pickle + Papad", d: "Roti, Seasonal Sabji + Dal Makhani + Kheer" }
+            },
+            wed: {
+                basic: { b: "Roti, Bhujia", l: "Rice, Dal, Egg Curry / Sabji", d: "Sattu Puri, Aloo Chana Sabji" },
+                premium: { b: "Roti, Bhujia + Boiled Egg / Fruit Juice", l: "Veg Pulao, Dal Fry, Egg Curry / Paneer + Sweet", d: "Sattu Puri, Aloo Chana Sabji + Roasted Papad" }
+            },
+            thu: {
+                basic: { b: "Bread Sandwich", l: "Veg Fried Rice, Dal Fry, Chips / Salad", d: "Paratha Sabji" },
+                premium: { b: "Grilled Cheese Sandwich + Cold Coffee", l: "Fried Rice, Dal Tadka, Chilli Paneer + Spring Roll", d: "Aloo Paratha (2) + Curd / Pickle + Moong Dal Halwa" }
+            },
+            fri: {
+                basic: { b: "Pasta / Poha, Tomato Ketchup", l: "Rice, Dal, Fish Curry / Chana Paneer Sabji", d: "Roti Sabji" },
+                premium: { b: "Masala Poha + Jalebi / Juice", l: "Jeera Rice, Fish Curry / Kadai Paneer + Mix Raita", d: "Missi Roti, Sabji + Corn Soup" }
+            },
+            sat: {
+                basic: { b: "Roti, Aloo Sabji", l: "Dal Khichdi, Aloo Choka / Pickle / Chips", d: "Roti, Veg Manchurian / Paneer Sabji" },
+                premium: { b: "Roti, Aloo Sabji + Curd", l: "Ghee Khichdi, 3 types of Bharta + Curd + Sweet", d: "Roti, Manchurian, Fried Rice + Ice Cream" }
+            },
+            sun: {
+                basic: { b: "Veg Chowmein", l: "Veg Fried Rice / Jeera Rice, Chicken / Paneer", d: "Chola Bhatura / Puri Chana Masala" },
+                premium: { b: "Paneer Chowmein / Sandwich + Beverage", l: "Dum Biryani (Chicken/Veg), Raita + Cold Drink", d: "Chola Bhatura, Salad + Lassi / Rasmalai" }
+            }
+        };
+
+        const mealImages = {
+            b: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80",
+            l: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80",
+            d: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=80"
+        };
+
+        function switchTier(tier) {
+            currentTier = tier;
+            document.getElementById('btn-basic').classList.remove('tab-active');
+            document.getElementById('btn-premium').classList.remove('tab-active');
+            document.getElementById('btn-' + tier).classList.add('tab-active');
+            updateMenuDisplay();
+        }
+
+        function changeDay(day) {
+            currentDay = day;
+            document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('tab-active'));
+            event.target.classList.add('tab-active');
+            updateMenuDisplay();
+        }
+
+        function updateMenuDisplay() {
+            const display = document.getElementById('menu-display');
+            const meals = menu[currentDay][currentTier];
+            
+            display.innerHTML = `
+                <div class="menu-card bg-white rounded-3xl overflow-hidden">
+                    <img src="${mealImages.b}" class="h-48 w-full object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-red-500 uppercase tracking-widest">Breakfast</span>
+                        <h4 class="text-xl font-bold mt-2">${meals.b}</h4>
+                    </div>
+                </div>
+                <div class="menu-card bg-white rounded-3xl overflow-hidden shadow-xl scale-105 border-red-200">
+                    <img src="${mealImages.l}" class="h-48 w-full object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-red-500 uppercase tracking-widest">Lunch</span>
+                        <h4 class="text-xl font-bold mt-2">${meals.l}</h4>
+                    </div>
+                </div>
+                <div class="menu-card bg-white rounded-3xl overflow-hidden">
+                    <img src="${mealImages.d}" class="h-48 w-full object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-red-500 uppercase tracking-widest">Dinner</span>
+                        <h4 class="text-xl font-bold mt-2">${meals.d}</h4>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Init
+        updateMenuDisplay();
+    </script>
+</body>
+</html>
